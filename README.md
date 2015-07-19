@@ -89,6 +89,8 @@ Since this is not a compiled program (just Javascript, sorry I am lazy), I am ma
 Future plans:
 -Either improve html document
 -or create desktop application
+-carriage offset calibration
+-accuracy improvements
 
 USE THIS AT YOUR OWN RISK:
 -I will not assume liability for any issues that may come from using this program.
