@@ -24,11 +24,7 @@ function calibrate()
 	var A = parseFloat(document.getElementById('A').value);
 	var B = parseFloat(document.getElementById('B').value);
 	var C = parseFloat(document.getElementById('C').value);
-	var DA = parseFloat(document.getElementById('DA').value);
-	var DB = parseFloat(document.getElementById('DB').value);
-	var DC = parseFloat(document.getElementById('DC').value);
 	var HRad = parseFloat(document.getElementById('HRad').value);
-	var HRadRatio;
 	var X = parseFloat(document.getElementById('X').value);
 	var Y = parseFloat(document.getElementById('Y').value);
 	var Z = parseFloat(document.getElementById('Z').value);
@@ -42,27 +38,8 @@ function calibrate()
 	var XOppTemp1 = parseFloat(document.getElementById('XOpp1').value);
 	var YOppTemp1 = parseFloat(document.getElementById('YOpp1').value);
 	var ZOppTemp1 = parseFloat(document.getElementById('ZOpp1').value);
-	//add one to delta rad a(x)
-	var XTemp2 = parseFloat(document.getElementById('X2').value);
-	var YTemp2 = parseFloat(document.getElementById('Y2').value);
-	var ZTemp2 = parseFloat(document.getElementById('Z2').value);
-	var XOppTemp2 = parseFloat(document.getElementById('XOpp2').value);
-	var YOppTemp2 = parseFloat(document.getElementById('YOpp2').value);
-	var ZOppTemp2 = parseFloat(document.getElementById('ZOpp2').value);
-	//add one to delta rad b(y)
-	var XTemp3 = parseFloat(document.getElementById('X3').value);
-	var YTemp3 = parseFloat(document.getElementById('Y3').value);
-	var ZTemp3 = parseFloat(document.getElementById('Z3').value);
-	var XOppTemp3 = parseFloat(document.getElementById('XOpp3').value);
-	var YOppTemp3 = parseFloat(document.getElementById('YOpp3').value);
-	var ZOppTemp3 = parseFloat(document.getElementById('ZOpp3').value);
-	//add one to delta rad c(z)
-	var XTemp4 = parseFloat(document.getElementById('X4').value);
-	var YTemp4 = parseFloat(document.getElementById('Y4').value);
-	var ZTemp4 = parseFloat(document.getElementById('Z4').value);
-	var XOppTemp4 = parseFloat(document.getElementById('XOpp4').value);
-	var YOppTemp4 = parseFloat(document.getElementById('YOpp4').value);
-	var ZOppTemp4 = parseFloat(document.getElementById('ZOpp4').value);
+
+	var HRadRatio;
 	var newA;
 	var newB;
 	var newC;
@@ -70,79 +47,33 @@ function calibrate()
 	var newDB;
 	var newDC;
 	var newHRad;
-	////////////////////////////////////////////////////////////////////////////////
-	var DOppPercX = parseFloat(document.getElementById('DOppPercX').value);
-	var DOppPercXR = parseFloat(document.getElementById('DOppPercXR').value);
-	var DOppPercXL = parseFloat(document.getElementById('DOppPercXL').value);
-	var DOppPercY = parseFloat(document.getElementById('DOppPercY').value);
-	var DOppPercYR = parseFloat(document.getElementById('DOppPercYR').value);
-	var DOppPercYL = parseFloat(document.getElementById('DOppPercYL').value);
-	var DOppPercZ = parseFloat(document.getElementById('DOppPercZ').value);
-	var DOppPercZR = parseFloat(document.getElementById('DOppPercZR').value);
-	var DOppPercZL = parseFloat(document.getElementById('DOppPercZL').value);
-	if (DOppPercX > 0 && DOppPercY > 0 && DOppPercZ)
-	{	
-		//user save data from previous calculation
-		//calculate DRad Differences for X
-		var DOpposingX = DOppPercX;
-		var DOpposingXR = DOppPercXR;
-		var DOpposingXL = DOppPercXL;
-		//repeat for Y
-		var DOpposingY = DOppPercY;
-		var DOpposingYR = DOppPercYR;
-		var DOpposingYL = DOppPercYL;
-		//repeat for Z
-		var DOpposingZ = DOppPercZ;
-		var DOpposingZR = DOppPercZR;
-		var DOpposingZL = DOppPercZL;
-	} else {
-		//calculate the specific perent difference in each tower for calibrating an accurate Delta Radius
-		//calculate DRad Differences for X
-		var DOpposingX = (XOppTemp2 - XOpp)/(XTemp2 - X);
-		var DOpposingXR = (ZOppTemp2 - ZOpp)/(XTemp2 - X);
-		var DOpposingXL = (YOppTemp2 - YOpp)/(XTemp2 - X);
-		//repeat for Y
-		var DOpposingY = (YOppTemp3 - YOpp)/(YTemp3 - Y);
-		var DOpposingYR = (XOppTemp3 - XOpp)/(YTemp3 - Y);
-		var DOpposingYL = (ZOppTemp3 - ZOpp)/(YTemp3 - Y);
-		//repeat for Z
-		var DOpposingZ = (ZOppTemp4 - ZOpp)/(ZTemp4 - Z);
-		var DOpposingZR = (YOppTemp4 - YOpp)/(ZTemp4 - Z);
-		var DOpposingZL = (XOppTemp4 - XOpp)/(ZTemp4 - Z);
-		document.getElementById('DOppPercX').value = DOpposingX;
-		document.getElementById('DOppPercXR').value = DOpposingXR;
-		document.getElementById('DOppPercXL').value = DOpposingXL;
-		document.getElementById('DOppPercY').value = DOpposingY;
-		document.getElementById('DOppPercYR').value = DOpposingYR;
-		document.getElementById('DOppPercYL').value = DOpposingYL;
-		document.getElementById('DOppPercZ').value = DOpposingZ;
-		document.getElementById('DOppPercZR').value = DOpposingZR;
-		document.getElementById('DOppPercZL').value = DOpposingZL;
-	}
-	
 	
 	//HRad is calibrated by increasing the outside edge of the glass by the average differences, this should balance the values with a central point of around zero
 	//calculate HRad Ratio
 	var HRadManual = parseFloat(document.getElementById('HRadManual').value);
+
 	if (HRadManual > 0 || HRadManual < 0) {
 		HRadRatio = HRadManual;
 		console.log("Hrad Ratio: ", HRadRatio);
 	} else {
 		HRadRatio = -(Math.abs((XTemp1 - X) + (YTemp1 - Y) + (ZTemp1 - Z) + (XOppTemp1 - XOpp) + (YOppTemp1 - YOpp) + (ZOppTemp1 - ZOpp))) / 6;
-		HRadRatio = HRadRatio.toFixed(4);
 		console.log("Hrad Ratio: ", HRadRatio);
 		document.getElementById('HRadManual').value = HRadRatio;
 	}
+
 	var HRadSA = ((X + XOpp + Y + YOpp + Z + ZOpp) / 6);
-	HRadSA = parseFloat(HRadSA.toFixed(4));
+
 	HRad = HRad + (HRadSA / HRadRatio);
+
 	console.log("HRad change in mm: ", HRadSA);
+
 	X = X - HRadSA;
 	Y = Y - HRadSA;
 	Z = Z - HRadSA;
 	XOpp = XOpp - HRadSA;
 	YOpp = YOpp - HRadSA;
 	ZOpp = ZOpp - HRadSA;
+
 	//check if values are close to zero, then set them to zero - avoids errors
 	function checkZero(value) {
 		if (value > 0 && value < 0.0001) {
@@ -150,16 +81,18 @@ function calibrate()
 		} else if (value < 0 && value > -0.0001) {
 			return 0;
 		} else {
-			value = parseFloat(value.toFixed(4));
+			value = parseFloat(value.toFixed(6));
 			return value;
 		}
 	}
+
 	X = checkZero(X);
 	Y = checkZero(Y);
 	Z = checkZero(Z);
 	XOpp = checkZero(XOpp);
 	YOpp = checkZero(YOpp);
 	ZOpp = checkZero(ZOpp);
+
 	//modify XYZ,O values to match the new horizontal radius
 	function calibVerify(){
 		//checks if the value obtained by the new HRad is correct
@@ -183,6 +116,7 @@ function calibrate()
 	////////////////////////////////////////////////////////////////////////////////
 	//Tower Offset Calibration******************************************************
 	var getSteps = document.getElementById('stepsPerMM').value;
+	
 	if (getSteps > 0) {
 		var stepsPerMM = getSteps;
 	} else {
@@ -404,8 +338,8 @@ function calibrate()
 		var hTow = Math.max(XOpp, YOpp, ZOpp);
 		var lTow = Math.min(XOpp, YOpp, ZOpp);
 		var towDiff = hTow - lTow;
-		towDiff = parseFloat(towDiff.toFixed(6));
-		if (towDiff < 0.0001) {
+
+		if (towDiff == 0) {
 			i = 1;
 			console.log("Alpha Rotation Calibrated to: ", towDiff);
 		}
@@ -481,70 +415,19 @@ function calibrate()
 	document.getElementById('A').value = A.toFixed(3);
 	document.getElementById('B').value = B.toFixed(3);
 	document.getElementById('C').value = C.toFixed(3);
-	/*
-	if (DA > 1 || DA < -1) {
-		document.getElementById('DA').value = DA.toPrecision(4);
-	} else if (DA > 0 && DA < 0.001) {
-		document.getElementById('DA').value = 0;
-		DA = 0;
-	} else if (DA < 0 && DA > -0.001) {
-		document.getElementById('DA').value = 0;
-		DA = 0;
-	} else {
-		document.getElementById('DA').value = DA.toPrecision(3);
-	}
-	if (DB > 1 || DB < -1) {
-		document.getElementById('DB').value = DB.toPrecision(4);
-	} else if (DB > 0 && DB < 0.001) {
-		document.getElementById('DB').value = 0;
-		DB = 0;
-	} else if (DB < 0 && DB > -0.001) {
-		document.getElementById('DB').value = 0;
-		DB = 0;
-	} else {
-		document.getElementById('DB').value = DB.toPrecision(3);
-	}
-	if (DC > 1 || DC < -1) {
-		document.getElementById('DC').value = DC.toPrecision(4);
-	} else if (DC > 0 && DC < 0.001) {
-		document.getElementById('DC').value = 0;
-		DC = 0;
-	} else if (DC < 0 && DC > -0.001) {
-		document.getElementById('DC').value = 0;
-		DC = 0;
-	} else {
-		document.getElementById('DC').value = DC.toPrecision(3);
-	}
-	*/
 	document.getElementById('HRad').value = HRad.toFixed(3);
 	document.getElementById('HRadManual').value = HRadRatio;
+
 	console.log("New tower heights: ", checkZero(X), checkZero(XOpp), checkZero(Y), checkZero(YOpp), checkZero(Z), checkZero(ZOpp));
 	console.log("New horizontal radius: ", HRad);
-	//console.log("New delta radii: ", DA, DB, DC);
 	console.log("New alpha rotation: ", A, B, C);
 }
 function enterDefaults(){
 	document.getElementById('A').value = 210;
 	document.getElementById('B').value = 330;
 	document.getElementById('C').value = 90;
-	/*
-	document.getElementById('DA').value = 0;
-	document.getElementById('DB').value = 0;
-	document.getElementById('DC').value = 0;
-	*/
 	document.getElementById('HRad').value = 130;
 	document.getElementById('HRadManual').value = -0.5;
-	/*
-	document.getElementById('DOppPercX').value = 0.45;
-	document.getElementById('DOppPercXR').value = 0.275;
-	document.getElementById('DOppPercXL').value = 0.275;
-	document.getElementById('DOppPercY').value = 0.45;
-	document.getElementById('DOppPercYR').value = 0.275;
-	document.getElementById('DOppPercYL').value = 0.275;
-	document.getElementById('DOppPercZ').value = 0.45;
-	document.getElementById('DOppPercZR').value = 0.275;
-	document.getElementById('DOppPercZL').value = 0.275;
-	*/
 	document.getElementById('stepsPerMM').value = 80;
 	/*
 	document.getElementById('X').value = -0.19;
@@ -554,10 +437,10 @@ function enterDefaults(){
 	document.getElementById('YOpp').value = -1.61;
 	document.getElementById('ZOpp').value = 0.53;
 	*/
-	/*
+	
 	document.getElementById('deltaTower').value = 0.13083;
 	document.getElementById('deltaOpp').value = 0.21083;
-	*/
+	
 	
 	document.getElementById('deltaTower').value = 0.13083; // 1/8
 	document.getElementById('deltaOpp').value = 0.21083; // 1/4
@@ -597,15 +480,6 @@ function enterDefaults(){
 	<input type="text" id="A" placeholder="A - Alpha Rotation (210)" />
 	<input type="text" id="B" placeholder="B - Alpha Rotation (330)" />
 	<input type="text" id="C" placeholder="C - Alpha Rotation (90)" />
-	<!--
-	<br />
-	<br />
-
-	Delta Radius - XYZ<br>
-	<input type="text" id="DA" placeholder="A - Delta Radius (0)" />
-	<input type="text" id="DB" placeholder="B - Delta Radius (0)" />
-	<input type="text" id="DC" placeholder="C - Delta Radius (0)" />
-	-->
 </span>
 
 <br />
@@ -636,8 +510,8 @@ Printer steps per mm:<br>
 <div id="HDRADManual" style="display: none">
 	Diagonal Rod Percentages:<br>
 	<span title="The percent change out of 1, that the towers change by when the diagonal rod value is changed.">
-		<input type="text" id="deltaTower" value="0.13083" placeholder="XYZ DiagRod (0.13083)" />
-		<input type="text" id="deltaOpp" value="0.21083" placeholder="XYZOpp DiagRod (0.21083)" />
+		<input type="text" id="deltaTower" value="" placeholder="XYZ DiagRod (0.13083)" />
+		<input type="text" id="deltaOpp" value="" placeholder="XYZOpp DiagRod (0.21083)" />
 	</span>
 
 	<br />
@@ -646,7 +520,7 @@ Printer steps per mm:<br>
 	<!-- -->
 	Horizontal Radius displacement when value is increased by 1:<br>
 	<span title="The amount the horizontal radius is shifted in mm, when the value is increased by 1.">
-		<input type="text" id="HRadManual" value="-0.5" placeholder="HRadManual (-0.5)" />
+		<input type="text" id="HRadManual" value="" placeholder="HRadManual (-0.5)" />
 	</span>
 
 	<br />
@@ -683,77 +557,6 @@ Printer steps per mm:<br>
 		<br />
 	</span>
 
-	Percentages for each opposite tower when delta radius is changed, this is calculated via the drad settings above.<br>
-	
-	<!--
-	<span title="Percent increase for the Delta Radius of the opposing tower and adjacent towers, write down these values to save yourself time later.">
-		<input type="text" id="DOppPercX" placeholder="X Opp DRad (0.45)" />
-		<input type="text" id="DOppPercXL" placeholder="Y Opp DRad (0.275)" />
-		<input type="text" id="DOppPercXR" placeholder="Z Opp DRad (0.275)" />
-
-		<br />
-		<br />
-
-		<input type="text" id="DOppPercY" placeholder="Y Opp DRad (0.45)" />
-		<input type="text" id="DOppPercYR" placeholder="X Opp DRad (0.275)" />
-		<input type="text" id="DOppPercYL" placeholder="ZOpp DRad (0.275)" />
-
-		<br />
-		<br />
-
-		<input type="text" id="DOppPercZ" placeholder="Z Opp DRad (0.45)" />
-		<input type="text" id="DOppPercZL" placeholder="X Opp DRad (0.275)" />
-		<input type="text" id="DOppPercZR" placeholder="Y Opp DRad (0.275)" />
-	</span>
-
-	<br />
-	<br />
-	
-	Tower heights when X Delta Radius is increased by 1:<br>
-	<span title="Increase your printers X Delta radius by 1 unit (change nothing else) and write the XYZ and Opposing tower heights here to calculate the percent change of other towers.">
-		<input type="text" id="X2" placeholder="X - DRadX +1" value=""/>
-		<input type="text" id="XOpp2" placeholder="X Opposite - DRadX +1" value=""/>
-
-		<input type="text" id="Y2" placeholder="Y - DRadX +1" value=""/>
-		<input type="text" id="YOpp2" placeholder="Y Opposite - DRadX +1" value=""/>
-
-		<input type="text" id="Z2" placeholder="Z - DRadX +1" value=""/>
-		<input type="text" id="ZOpp2" placeholder="Z Opposite - DRadX +1" value=""/>
-
-		<br />
-		<br />
-	</span>
-
-	Tower heights when Y Delta Radius is increased by 1:<br>
-	<span title="Increase your printers Y Delta radius by 1 unit (change nothing else) and write the XYZ and Opposing tower heights here to calculate the percent change of other towers.">
-		<input type="text" id="X3" placeholder="X - DRadY +1" value=""/>
-		<input type="text" id="XOpp3" placeholder="X Opposite - DRadY +1" value=""/>
-
-		<input type="text" id="Y3" placeholder="Y - DRadY +1" value=""/>
-		<input type="text" id="YOpp3" placeholder="Y Opposite - DRadY +1" value=""/>
-
-		<input type="text" id="Z3" placeholder="Z - DRadY +1" value=""/>
-		<input type="text" id="ZOpp3" placeholder="Z Opposite - DRadY +1" value=""/>
-
-		<br />
-		<br />
-	</span>
-
-	Tower heights when Z Delta Radius is increased by 1:<br>
-	<span title="Increase your printers Z Delta radius by 1 unit (change nothing else) and write the XYZ and Opposing tower heights here to calculate the percent change of other towers.">
-		<input type="text" id="X4" placeholder="X - DRadZ +1" value=""/>
-		<input type="text" id="XOpp4" placeholder="X Opposite - DRadZ +1" value=""/>
-
-		<input type="text" id="Y4" placeholder="Y - DRadZ +1" value=""/>
-		<input type="text" id="YOpp4" placeholder="Y Opposite - DRadZ +1" value=""/>
-
-		<input type="text" id="Z4" placeholder="Z - DRadZ +1" value=""/>
-		<input type="text" id="ZOpp4" placeholder="Z Opposite - DRadZ +1" value=""/>
-
-		<br />
-		<br />
-	</span>
-	-->
 	Calculate steps per millimeter:<br>
 	<select id="stepSize" onchange="stepSize.style.color = 'black'">
 		<option value="" disabled selected>Motor step angle</option>
