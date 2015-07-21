@@ -18,25 +18,6 @@ This WILL calibrate your printer even if your endstops are off, in fact, you won
 This WILL calibrate your printer even if your borosillicate plate is warped.
 This WILL calibrate your printer if your bed is slanted.
 
-//Why
-
-I created this program out of frustration, mostly. I have tried using an uncountable amount of techniques others have used to successfully calibrate their printers. Most of the time, the techniques are very similar to how the Rostock Max V2 manual says to calibrate the machine, however, that method is flawed in some cases. It completely ignores the virtual towers of the delta machine it self. As the ideal delta machine would have six towers, however it isn't necessary as you can see when you look at your three tower delta. What I am saying, is that the manual only calibrates 3 of the 6 "towers" that need calibrated. In some cases, this works perfectly, on a perfect machine, however, the method in the manual cannot calibrate printers that are not mechanically perfect.
-
-That is where this program comes into play, as I have tried to manually calibrate delta radius, tower offset, alpha rotation, etc. But it is next to impossible to get it perfect without spending 4 weeks straight, skipping your job and skipping sleep to calibrate it this way. But this program fixes these issues, and it doesn't take four weeks. I managed to calibrate mine to the precision that is SeeMeCNC states that the Rostock Max V2 can operate at in under 5 minutes.
-
-Of course there are requirements to use this:
--calipers, or a dial gauge
--zip ties, or other way to mount the calipers/dial gauge
--rubber band if you are using calipers
-
-Or if you are fancy, then you can use a Z-probe.
-
-//How if you don't have a Z-probe.
-
-I attached my calipers with 2 zip ties to the side of my hot end, and attached a rubber band to the slider on the calipers and the other end of the band to the hot end as well, this just allows the calipers to have a slight amount of pressure against the plate, giving more accurate results.
-
-Once you're set up to measure the plate, enter this g-code after setting all of your EEPROM configuration back to it's original settings:
-
 //How it works
 
 To give a brief explanation of how this program works, I will describe it step by step.
@@ -52,12 +33,6 @@ This step is not entirely necessary but it allows for the diagonal rod to be cal
 //HorizontalRadius
 
 The program simply averages the heights of the build plate at the towers and virtual towers at the edge of the build plate. This value is then subtracted by each tower to give the new tower heights, and multiplied by -0.5 then added to the horizontal radius. This simply balances the points around zero.
-
-//Delta Radius
-
-The next step was to calculate the delta radius. This involves finding the amount of change, for instance when you change the Delta Radius for the X tower from 0 to 1, it increases the virtual tower opposite of the X tower by 45%, of what the X tower is increased by and the two virtual towers adjacent (YOpp, ZOpp) to the X tower are increased by 27.5%, of what the X tower was increased by. The X delta radius does not however affect the Y and Z tower.
-
-Once the program has these values, it can then predict where the Delta Radius values need to be for the XYZ towers (excluding the virtual towers) to be equal to approximately 0. The prediction is done in this case via linear regression.
 
 //Alpha Rotation
 
