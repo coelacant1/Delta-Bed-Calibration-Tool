@@ -24,23 +24,28 @@ function calibrate()
 	var A = parseFloat(document.getElementById('A').value);
 	var B = parseFloat(document.getElementById('B').value);
 	var C = parseFloat(document.getElementById('C').value);
+	var DA = parseFloat(document.getElementById('DA').value);
+	var DB = parseFloat(document.getElementById('DB').value);
+	var DC = parseFloat(document.getElementById('DC').value);
 	var HRad = parseFloat(document.getElementById('HRad').value);
 	var measInver = parseFloat(document.getElementById('measInver').value);
+	var probeHeight = parseFloat(document.getElementById('probeHeight').value);
 
-	var X = parseFloat(document.getElementById('X').value) * measInver;
-	var Y = parseFloat(document.getElementById('Y').value) * measInver;
-	var Z = parseFloat(document.getElementById('Z').value) * measInver;
-	var XOpp = parseFloat(document.getElementById('XOpp').value) * measInver;
-	var YOpp = parseFloat(document.getElementById('YOpp').value) * measInver;
-	var ZOpp = parseFloat(document.getElementById('ZOpp').value) * measInver;
+	var X = parseFloat(document.getElementById('X').value) * measInver - probeHeight;
+	var Y = parseFloat(document.getElementById('Y').value) * measInver - probeHeight;
+	var Z = parseFloat(document.getElementById('Z').value) * measInver - probeHeight;
+	var XOpp = parseFloat(document.getElementById('XOpp').value) * measInver - probeHeight;
+	var YOpp = parseFloat(document.getElementById('YOpp').value) * measInver - probeHeight;
+	var ZOpp = parseFloat(document.getElementById('ZOpp').value) * measInver - probeHeight;
 
 	//add one to hrad
-	var XTemp1 = parseFloat(document.getElementById('X1').value) * measInver;
-	var YTemp1 = parseFloat(document.getElementById('Y1').value) * measInver;
-	var ZTemp1 = parseFloat(document.getElementById('Z1').value) * measInver;
-	var XOppTemp1 = parseFloat(document.getElementById('XOpp1').value) * measInver;
-	var YOppTemp1 = parseFloat(document.getElementById('YOpp1').value) * measInver;
-	var ZOppTemp1 = parseFloat(document.getElementById('ZOpp1').value) * measInver;
+	var XTemp1 = parseFloat(document.getElementById('X1').value) * measInver - probeHeight;
+	var YTemp1 = parseFloat(document.getElementById('Y1').value) * measInver - probeHeight;
+	var ZTemp1 = parseFloat(document.getElementById('Z1').value) * measInver - probeHeight;
+	var XOppTemp1 = parseFloat(document.getElementById('XOpp1').value) * measInver - probeHeight;
+	var YOppTemp1 = parseFloat(document.getElementById('YOpp1').value) * measInver - probeHeight;
+	var ZOppTemp1 = parseFloat(document.getElementById('ZOpp1').value) * measInver - probeHeight;
+
 
 	var HRadRatio;
 	var newA;
@@ -56,30 +61,30 @@ function calibrate()
 	//Find the percentages for XYZ Offset
 	var xOppositePercentage = parseFloat(document.getElementById('xOppositePercentage').value);
 	var yzPercentage = parseFloat(document.getElementById('yzPercentage').value);
-	var X2 = parseFloat(document.getElementById('X2').value) * measInver;
-	var Y2 = parseFloat(document.getElementById('Y2').value) * measInver;
-	var Z2 = parseFloat(document.getElementById('Z2').value) * measInver;
-	var XOpp2 = parseFloat(document.getElementById('XOpp2').value) * measInver;
-	var YOpp2 = parseFloat(document.getElementById('YOpp2').value) * measInver;
-	var ZOpp2 = parseFloat(document.getElementById('ZOpp2').value) * measInver;
+	var X2 = parseFloat(document.getElementById('X2').value) * measInver - probeHeight;
+	var Y2 = parseFloat(document.getElementById('Y2').value) * measInver - probeHeight;
+	var Z2 = parseFloat(document.getElementById('Z2').value) * measInver - probeHeight;
+	var XOpp2 = parseFloat(document.getElementById('XOpp2').value) * measInver - probeHeight;
+	var YOpp2 = parseFloat(document.getElementById('YOpp2').value) * measInver - probeHeight;
+	var ZOpp2 = parseFloat(document.getElementById('ZOpp2').value) * measInver - probeHeight;
 
 	var yOppositePercentage = parseFloat(document.getElementById('yOppositePercentage').value);
 	var xzPercentage = parseFloat(document.getElementById('xzPercentage').value);
-	var X3 = parseFloat(document.getElementById('X3').value) * measInver;
-	var Y3 = parseFloat(document.getElementById('Y3').value) * measInver;
-	var Z3 = parseFloat(document.getElementById('Z3').value) * measInver;
-	var XOpp3 = parseFloat(document.getElementById('XOpp3').value) * measInver;
-	var YOpp3 = parseFloat(document.getElementById('YOpp3').value) * measInver;
-	var ZOpp3 = parseFloat(document.getElementById('ZOpp3').value) * measInver;
+	var X3 = parseFloat(document.getElementById('X3').value) * measInver - probeHeight;
+	var Y3 = parseFloat(document.getElementById('Y3').value) * measInver - probeHeight;
+	var Z3 = parseFloat(document.getElementById('Z3').value) * measInver - probeHeight;
+	var XOpp3 = parseFloat(document.getElementById('XOpp3').value) * measInver - probeHeight;
+	var YOpp3 = parseFloat(document.getElementById('YOpp3').value) * measInver - probeHeight;
+	var ZOpp3 = parseFloat(document.getElementById('ZOpp3').value) * measInver - probeHeight;
 
 	var zOppositePercentage = parseFloat(document.getElementById('zOppositePercentage').value);
 	var xyPercentage = parseFloat(document.getElementById('xyPercentage').value);
-	var X4 = parseFloat(document.getElementById('X4').value) * measInver;
-	var Y4 = parseFloat(document.getElementById('Y4').value) * measInver;
-	var Z4 = parseFloat(document.getElementById('Z4').value) * measInver;
-	var XOpp4 = parseFloat(document.getElementById('XOpp4').value) * measInver;
-	var YOpp4 = parseFloat(document.getElementById('YOpp4').value) * measInver;
-	var ZOpp4 = parseFloat(document.getElementById('ZOpp4').value) * measInver;
+	var X4 = parseFloat(document.getElementById('X4').value) * measInver - probeHeight;
+	var Y4 = parseFloat(document.getElementById('Y4').value) * measInver - probeHeight;
+	var Z4 = parseFloat(document.getElementById('Z4').value) * measInver - probeHeight;
+	var XOpp4 = parseFloat(document.getElementById('XOpp4').value) * measInver - probeHeight;
+	var YOpp4 = parseFloat(document.getElementById('YOpp4').value) * measInver - probeHeight;
+	var ZOpp4 = parseFloat(document.getElementById('ZOpp4').value) * measInver - probeHeight;
 
 	function getPercentagesOpp(XYZ, X, Y, Z, XOpp, YOpp, ZOpp, X2, Y2, Z2, XOpp2, YOpp2, ZOpp2) {
 		var percentages;
@@ -183,74 +188,106 @@ function calibrate()
 	deltaOpp = Math.abs(deltaOpp);
 
 	
-	//HRad is calibrated by increasing the outside edge of the glass by the average differences, this should balance the values with a central point of around zero
+//HRad is calibrated by increasing the outside edge of the glass by the average differences, this should balance the values with a central point of around zero
 	//calculate HRad Ratio
 	var HRadManual = parseFloat(document.getElementById('HRadManual').value);
-
 	if (HRadManual > 0 || HRadManual < 0) {
 		HRadRatio = HRadManual;
 		console.log("Hrad Ratio: ", HRadRatio);
 	} else {
 		HRadRatio = -(Math.abs((XTemp1 - X) + (YTemp1 - Y) + (ZTemp1 - Z) + (XOppTemp1 - XOpp) + (YOppTemp1 - YOpp) + (ZOppTemp1 - ZOpp))) / 6;
+		HRadRatio = HRadRatio.toFixed(4);
 		console.log("Hrad Ratio: ", HRadRatio);
 		document.getElementById('HRadManual').value = HRadRatio;
 	}
-
 	var HRadSA = ((X + XOpp + Y + YOpp + Z + ZOpp) / 6);
-
+	HRadSA = parseFloat(HRadSA.toFixed(4));
 	HRad = HRad + (HRadSA / HRadRatio);
-
 	console.log("HRad change in mm: ", HRadSA);
-
 	X = X - HRadSA;
 	Y = Y - HRadSA;
 	Z = Z - HRadSA;
 	XOpp = XOpp - HRadSA;
 	YOpp = YOpp - HRadSA;
 	ZOpp = ZOpp - HRadSA;
-
 	//check if values are close to zero, then set them to zero - avoids errors
 	function checkZero(value) {
-		if (value > 0 && value < accuracy) {
+		if (value > 0 && value < 0.0001) {
 			return 0;
-		} else if (value < 0 && value > -accuracy) {
+		} else if (value < 0 && value > -0.0001) {
 			return 0;
 		} else {
-			value = parseFloat(value.toFixed(3));
+			value = parseFloat(value.toFixed(4));
 			return value;
 		}
 	}
-
 	X = checkZero(X);
 	Y = checkZero(Y);
 	Z = checkZero(Z);
 	XOpp = checkZero(XOpp);
 	YOpp = checkZero(YOpp);
 	ZOpp = checkZero(ZOpp);
-
 	//modify XYZ,O values to match the new horizontal radius
 	function calibVerify(){
 		//checks if the value obtained by the new HRad is correct
-		if (HRadSA < 0.5) {
-			HRadSA = checkZero(HRadSA);
-
+		if (HRadSA < 0.1) {
+			if (HRadSA < 0.0001) {
+				HRadSA = 0;
+			}
 			console.log("Horizontal Radius Calibration Success - ", HRadSA);
 		} else {
 			console.log("Horizontal Radius Calibration Failure - ", HRadSA);
 		}
 	}
-
 	console.log("Tower heights after horizontal radius calibration: ", X, XOpp, Y, YOpp, Z, ZOpp);
 	
+
 	//checks the calibration of the horizontal radius
 	calibVerify();
-	
 
+    var DASA = ((X + XOpp) / 2);
+    var DBSA = ((Y + YOpp) / 2);
+    var DCSA = ((Z + ZOpp) / 2);
+    DA = DA + ((DASA) / HRadRatio);
+    DB = DB + ((DBSA) / HRadRatio);
+    DC = DC + ((DCSA) / HRadRatio);
 
+	if (DA > 1 || DA < -1) {
+		document.getElementById('DA').value = DA.toPrecision(4);
+	} else if (DA > 0 && DA < 0.001) {
+		document.getElementById('DA').value = 0;
+		DA = 0;
+	} else if (DA < 0 && DA > -0.001) {
+		document.getElementById('DA').value = 0;
+		DA = 0;
+	} else {
+		document.getElementById('DA').value = DA.toPrecision(3);
+	}
+	if (DB > 1 || DB < -1) {
+		document.getElementById('DB').value = DB.toPrecision(4);
+	} else if (DB > 0 && DB < 0.001) {
+		document.getElementById('DB').value = 0;
+		DB = 0;
+	} else if (DB < 0 && DB > -0.001) {
+		document.getElementById('DB').value = 0;
+		DB = 0;
+	} else {
+		document.getElementById('DB').value = DB.toPrecision(3);
+	}
+	if (DC > 1 || DC < -1) {
+		document.getElementById('DC').value = DC.toPrecision(4);
+	} else if (DC > 0 && DC < 0.001) {
+		document.getElementById('DC').value = 0;
+		DC = 0;
+	} else if (DC < 0 && DC > -0.001) {
+		document.getElementById('DC').value = 0;
+		DC = 0;
+	} else {
+		document.getElementById('DC').value = DC.toPrecision(3);
+	}
 	////////////////////////////////////////////////////////////////////////////////
 	//Tower Offset Calibration******************************************************
 	var getSteps = document.getElementById('stepsPerMM').value;
-
 	if (getSteps > 0) {
 		var stepsPerMM = getSteps;
 	} else {
@@ -258,214 +295,200 @@ function calibrate()
 		var driverMicroStepping = document.getElementById('microStepping').value;
 		var beltPitch = document.getElementById('beltPitch').value;
 		var toothCount = document.getElementById('toothCount').value;
-
-		var stepsPerMM = ((360 / motorStepAngle) * driverMicroStepping)/(beltPitch * toothCount);
-
+		stepsPerMM = ((360 / motorStepAngle) * driverMicroStepping)/(beltPitch * toothCount);
 		document.getElementById('stepsPerMM').value = stepsPerMM;
 	}
-
 	//balance axes
 	var offsetX = parseFloat(document.getElementById('offsetX').value);
 	var offsetY = parseFloat(document.getElementById('offsetY').value);
 	var offsetZ = parseFloat(document.getElementById('offsetZ').value);
 	var offsetXYZ = 1 / 0.66;
 
-	for (var k = 0; k < 1;)
+    //XYZ offset
+    //X
+    var xxOppPerc = 0.5;
+    var xyPerc = 0.25;
+    var xyOppPerc = 0.25;
+    var xzPerc = 0.25;
+    var xzOppPerc = 0.25;
+
+    //Y
+    var yyOppPerc = 0.5;
+    var yxPerc = 0.25;
+    var yxOppPerc = 0.25;
+    var yzPerc = 0.25;
+    var yzOppPerc = 0.25;
+
+    //Z
+    var zzOppPerc = 0.5;
+    var zxPerc = 0.25;
+    var zxOppPerc = 0.25;
+    var zyPerc = 0.25;
+    var zyOppPerc = 0.25;
+
+    var j = 0;
+	//correction of one tower allows the diagonal rod to respond more accurately
+	while (j < 1)
 	{
-		var theoryX = offsetX + X * stepsPerMM * offsetXYZ;
+        var theoryX = offsetX + X * stepsPerMM * offsetXYZ;
 
-		//correction of one tower allows for XY dimensional accuracy
-		if (X > 0) {
-			offsetX = offsetX + X * stepsPerMM * offsetXYZ;
+        //correction of one tower allows for XY dimensional accuracy
+        if (X > 0)
+        {
+            //if x is positive
+            offsetX = offsetX + X * stepsPerMM * offsetXYZ;
 
-			XOpp = XOpp + (X * xOppPerc);//0.5
-			Z = Z + (X * yzPerc);//0.25
-			Y = Y + (X * yzPerc);//0.25
-			ZOpp = ZOpp - (X * yzPerc);//0.25
-			YOpp = YOpp - (X * yzPerc);//0.25
-			X = X - X;
-		} else if (theoryX > 0 && X < 0) {
-			offsetX = offsetX + X * stepsPerMM * offsetXYZ;
+            XOpp = XOpp + (X * xxOppPerc);//0.5
+            Z = Z + (X * xzPerc);//0.25
+            Y = Y + (X * xyPerc);//0.25
+            ZOpp = ZOpp - (X * xzOppPerc);//0.25
+            YOpp = YOpp - (X * xyOppPerc);//0.25
+            X = X - X;
+        }
+        else if (theoryX > 0 && X < 0)
+        {
+            //if x is negative and can be decreased
+            offsetX = offsetX + X * stepsPerMM * offsetXYZ;
 
-			XOpp = XOpp + (X * xOppPerc);//0.5
-			Z = Z + (X * yzPerc);//0.25
-			Y = Y + (X * yzPerc);//0.25
-			ZOpp = ZOpp - (X * yzPerc);//0.25
-			YOpp = YOpp - (X * yzPerc);//0.25
-			X = X - X;
-		} else {
-			//if X is negative
-			offsetY = offsetY - X * stepsPerMM * offsetXYZ;
-			offsetZ = offsetZ - X * stepsPerMM * offsetXYZ;
+            XOpp = XOpp + (X * xxOppPerc);//0.5
+            Z = Z + (X * xzPerc);//0.25
+            Y = Y + (X * xyPerc);//0.25
+            ZOpp = ZOpp - (X * xzOppPerc);//0.25
+            YOpp = YOpp - (X * xyOppPerc);//0.25
+            X = X - X;
+        }
+        else
+        {
+            //if X is negative
+            offsetY = offsetY - X * stepsPerMM * offsetXYZ * 2;
+            offsetZ = offsetZ - X * stepsPerMM * offsetXYZ * 2;
 
-			XOpp = XOpp + (X * xOppPerc);
-			Z = Z + (X * yzPerc);
-			Y = Y + (X * yzPerc);
-			ZOpp = ZOpp - (X * yzPerc);
-			YOpp = YOpp - (X * yzPerc);
-			X = X - X;
-		}
+            YOpp = YOpp - (X * 2 * yyOppPerc);
+            X = X - (X * 2 * yxPerc);
+            Z = Z - (X * 2 * yxPerc);
+            XOpp = XOpp + (X * 2 * yxOppPerc);
+            ZOpp = ZOpp + (X * 2 * yxOppPerc);
+            Y = Y + X * 2;
 
-		var theoryY = offsetY + Y * stepsPerMM * offsetXYZ;
+            ZOpp = ZOpp - (X * 2 * zzOppPerc);
+            X = X - (X * 2 * zxPerc);
+            Y = Y - (X * 2 * zyPerc);
+            XOpp = XOpp + (X * 2 * yxOppPerc);
+            YOpp = YOpp + (X * 2 * zyOppPerc);
+            Z = Z + X * 2;
+        }
 
-		//Y
-		if (Y > 0) {
-			offsetY = offsetY + Y * stepsPerMM * offsetXYZ;
+        var theoryY = offsetY + Y * stepsPerMM * offsetXYZ;
 
-			YOpp = YOpp + (Y * yOppPerc);
-			X = X + (Y * xzPerc);
-			Z = Z + (Y * xzPerc);
-			XOpp = XOpp - (Y * xzPerc);
-			ZOpp = ZOpp - (Y * xzPerc);
-			Y = Y - Y;
-		} else if (theoryY > 0 && Y < 0){
-			offsetY = offsetY + Y * stepsPerMM * offsetXYZ;
+        //Y
+        if (Y > 0)
+        {
+        	offsetY = offsetY + Y * stepsPerMM * offsetXYZ;
 
-			YOpp = YOpp + (Y * yOppPerc);
-			X = X + (Y * xzPerc);
-			Z = Z + (Y * xzPerc);
-			XOpp = XOpp - (Y * xzPerc);
-			ZOpp = ZOpp - (Y * xzPerc);
-			Y = Y - Y;
-		} else {
-			offsetX = offsetX - Y * stepsPerMM * offsetXYZ;
-			offsetZ = offsetZ - Y * stepsPerMM * offsetXYZ;
+        	YOpp = YOpp + (Y * yyOppPerc);
+        	X = X + (Y * yxPerc);
+        	Z = Z + (Y * yxPerc);
+        	XOpp = XOpp - (Y * yxOppPerc);
+        	ZOpp = ZOpp - (Y * yxOppPerc);
+        	Y = Y - Y;
+        }
+        else if (theoryY > 0 && Y < 0)
+        {
+        	offsetY = offsetY + Y * stepsPerMM * offsetXYZ;
 
-			YOpp = YOpp + (Y * yOppPerc);
-			X = X + (Y * xzPerc);
-			Z = Z + (Y * xzPerc);
-			XOpp = XOpp - (Y * xzPerc);
-			ZOpp = ZOpp - (Y * xzPerc);
-			Y = Y - Y;
-		}
+        	YOpp = YOpp + (Y * yyOppPerc);
+        	X = X + (Y * yxPerc);
+        	Z = Z + (Y * yxPerc);
+        	XOpp = XOpp - (Y * yxOppPerc);
+        	ZOpp = ZOpp - (Y * yxOppPerc);
+        	Y = Y - Y;
+        }
+        else
+        {
+        	offsetX = offsetX - Y * stepsPerMM * offsetXYZ * 2;
+        	offsetZ = offsetZ - Y * stepsPerMM * offsetXYZ * 2;
 
-		var theoryZ = offsetZ + Z * stepsPerMM * offsetXYZ;
+            XOpp = XOpp - (Y * 2 * xxOppPerc);//0.5
+            Z = Z - (Y * 2 * xzPerc);//0.25
+            Y = Y - (Y * 2 * xyPerc);//0.25
+            ZOpp = ZOpp + (Y * 2 * xzOppPerc);//0.25
+            YOpp = YOpp + (Y * 2 * xyOppPerc);//0.25
+            X = X + Y * 2;
 
-		//Z
-		if (Z > 0) {
-			offsetZ = offsetZ + Z * stepsPerMM * offsetXYZ;
+            ZOpp = ZOpp - (Y * 2 * zzOppPerc);
+            X = X - (Y * 2 * zxPerc);
+            Y = Y - (Y * 2 * zyPerc);
+            XOpp = XOpp + (Y * 2 * yxOppPerc);
+            YOpp = YOpp + (Y * 2 * zyOppPerc);
+            Z = Z + Y * 2;
+        }
 
-			ZOpp = ZOpp + (Z * zOppPerc);
-			X = X + (Z * xyPerc);
-			Y = Y + (Z * xyPerc);
-			XOpp = XOpp - (Z * xyPerc);
-			YOpp = YOpp - (Z * xyPerc);
-			Z = Z - Z;
-		} else if (theoryZ > 0 && Z < 0) {
-			offsetZ = offsetZ + Z * stepsPerMM * offsetXYZ;
+        var theoryZ = offsetZ + Z * stepsPerMM * offsetXYZ;
 
-			ZOpp = ZOpp + (Z * zOppPerc);
-			X = X + (Z * xyPerc);
-			Y = Y + (Z * xyPerc);
-			XOpp = XOpp - (Z * xyPerc);
-			YOpp = YOpp - (Z * xyPerc);
-			Z = Z - Z;
-		} else {
-			offsetY = offsetY - Z * stepsPerMM * offsetXYZ;
-			offsetX = offsetX - Z * stepsPerMM * offsetXYZ;
+        //Z
+        if (Z > 0)
+        {
+        	offsetZ = offsetZ + Z * stepsPerMM * offsetXYZ;
 
-			ZOpp = ZOpp + (Z * zOppPerc);
-			X = X + (Z * xyPerc);
-			Y = Y + (Z * xyPerc);
-			XOpp = XOpp - (Z * xyPerc);
-			YOpp = YOpp - (Z * xyPerc);
-			Z = Z - Z;
-		}
+        	ZOpp = ZOpp + (Z * zzOppPerc);
+        	X = X + (Z * zxPerc);
+        	Y = Y + (Z * zyPerc);
+        	XOpp = XOpp - (Z * yxOppPerc);
+        	YOpp = YOpp - (Z * zyOppPerc);
+        	Z = Z - Z;
+        }
+        else if (theoryZ > 0 && Z < 0)
+        {
+        	offsetZ = offsetZ + Z * stepsPerMM * offsetXYZ;
 
-		X = checkZero(X);
-		Y = checkZero(Y);
-		Z = checkZero(Z);
-		XOpp = checkZero(XOpp);
-		YOpp = checkZero(YOpp);
-		ZOpp = checkZero(ZOpp);
+        	ZOpp = ZOpp + (Z * zzOppPerc);
+        	X = X + (Z * zxPerc);
+        	Y = Y + (Z * zyPerc);
+        	XOpp = XOpp - (Z * yxOppPerc);
+        	YOpp = YOpp - (Z * zyOppPerc);
+        	Z = Z - Z;
+        }
+        else
+        {
+        	offsetY = offsetY - Z * stepsPerMM * offsetXYZ * 2;
+        	offsetX = offsetX - Z * stepsPerMM * offsetXYZ * 2;
 
-		if (X < accuracy && X > -accuracy && Y < accuracy && Y > -accuracy && Z < accuracy && Z > -accuracy) {
-			k = 1;
+            XOpp = XOpp - (Z * 2 * xxOppPerc);//0.5
+            Z = Z - (Z * 2 * xzPerc);//0.25
+            Y = Y - (Z * 2 * xyPerc);//0.25
+            ZOpp = ZOpp + (Z * 2 * xzOppPerc);//0.25
+            YOpp = YOpp + (Z * 2 * xyOppPerc);//0.25
+            X = X + Z * 2;
 
-			console.log("Tower heights during XYZ offset calibration: ", X, XOpp, Y, YOpp, Z, ZOpp);
-		}
-	}
+            YOpp = YOpp - (Z * 2 * yyOppPerc);
+            X = X - (Z * 2 * yxPerc);
+            Z = Z - (Z * 2 * yxPerc);
+            XOpp = XOpp + (Z * 2 * yxOppPerc);
+            ZOpp = ZOpp + (Z * 2 * yxOppPerc);
+            Y = Y + Z * 2;
+        }
 
-	console.log("Tower heights after XYZ offset calibration: ", X, XOpp, Y, YOpp, Z, ZOpp);
+        X = checkZero(X);
+        Y = checkZero(Y);
+        Z = checkZero(Z);
+        XOpp = checkZero(XOpp);
+        YOpp = checkZero(YOpp);
+        ZOpp = checkZero(ZOpp);
+
+    	console.log("Virtual heights: X:", X, ", XOpp:", XOpp, ", Y:", Y, ", YOpp:", YOpp, ", Z:", Z, ", and ZOpp:", ZOpp, "\n");
+
+    	var accuracy = 0.005;
+        if (X < accuracy && X > -accuracy && Y < accuracy && Y > -accuracy && Z < accuracy && Z > -accuracy)
+        {
+        	j = 1;
+        }
+    }
 
 	document.getElementById('offsetX').value = Math.round(offsetX);
 	document.getElementById('offsetY').value = Math.round(offsetY);
 	document.getElementById('offsetZ').value = Math.round(offsetZ);
 	
-	//use to guess delta radius if it is able to be calibrated
-	/*
-	//Delta Radius Calibration******************************************************
-	//should not have large input values, or should even equal zero
-	function linearRegression(y,x){
-		var lr = {};
-		var n = y.length;
-		var sum_x = 0;
-		var sum_y = 0;
-		var sum_xy = 0;
-		var sum_xx = 0;
-		var sum_yy = 0;
-		
-		for (var i = 0; i < y.length; i++) {
-			
-			sum_x += x[i];
-			sum_y += y[i];
-			sum_xy += (x[i]*y[i]);
-			sum_xx += (x[i]*x[i]);
-			sum_yy += (y[i]*y[i]);
-		} 
-		
-		lr['slope'] = (n * sum_xy - sum_x * sum_y) / (n*sum_xx - sum_x * sum_x);
-		lr['intercept'] = (sum_y - lr.slope * sum_x)/n;
-		lr['r2'] = Math.pow((n*sum_xy - sum_x*sum_y)/Math.sqrt((n*sum_xx-sum_x*sum_x)*(n*sum_yy-sum_y*sum_y)),2);
-		
-		return lr;
-	}
-	// lr.slope
-	// lr.intercept
-	// lr.r2
-	//DA = X / -0.5 + DA;
-	var known_yDA = [X, XTemp2];
-	var known_xDA = [0, 1];
-	var lrDA = linearRegression(known_yDA, known_xDA);
-	var DATemp = DA;
-	console.log(lrDA);
-	DA = lrDA.intercept * -2 + DA;
-	DA = checkZero(DA);
-	XOpp = ((lrDA.intercept * DOpposingX) - XOpp) * -1;
-	YOpp = ((lrDA.intercept * DOpposingXL) - YOpp) * -1;
-	ZOpp = ((lrDA.intercept * DOpposingXR) - ZOpp) * -1;
-	X = lrDA.intercept - X;
-	X = checkZero(X);
-	/////////////////////////////////////
-	var known_yDB = [Y, YTemp3];
-	var known_xDB = [0, 1];
-	var lrDB = linearRegression(known_yDB, known_xDB);
-	var DBTemp = DB;
-	DB = lrDB.intercept * -2 + DB + (lrDB.intercept * 0.125);
-	DB = checkZero(DB);
-	XOpp = ((lrDB.intercept * DOpposingYR) - XOpp) * -1;
-	YOpp = ((lrDB.intercept * DOpposingY) - YOpp) * -1;
-	ZOpp = ((lrDB.intercept * DOpposingYL) - ZOpp) * -1;
-	Y = lrDB.intercept - Y;
-	Y = checkZero(Y);
-	/////////////////////////////////////
-	var known_yDC = [Z, ZTemp4];
-	var known_xDC = [0, 1];
-	var lrDC = linearRegression(known_yDC, known_xDC);
-	var DCTemp = DC;
-	console.log(lrDC);
-	DC = lrDC.intercept * -2 + DC + (lrDC.intercept * 0.25);
-	DC = checkZero(DC);
-	XOpp = ((lrDC.intercept * DOpposingZL) - XOpp) * -1;
-	YOpp = ((lrDC.intercept * DOpposingZR) - YOpp) * -1;
-	ZOpp = ((lrDC.intercept * DOpposingZ) - ZOpp) * -1;
-	Z = lrDC.intercept - Z;
-	Z = checkZero(Z);
-	console.log(DA, DB, DC);
-	console.log("Tower heights after delta radius calibration: ", X, XOpp, Y, YOpp, Z, ZOpp);
-	*/
-
-
+	
 	//Alpha Rotation Calibration****************************************************
 	//Iterate through until balanced
 	//change loop to be based on difference between XOpp, YOpp, ZOpp
@@ -514,21 +537,39 @@ function calibrate()
 		var hTow = Math.max(XOpp, YOpp, ZOpp);
 		var lTow = Math.min(XOpp, YOpp, ZOpp);
 		var towDiff = hTow - lTow;
-
-		if (towDiff < accuracy && towDiff > -accuracy) {
+		towDiff = parseFloat(towDiff.toFixed(6));
+		if (towDiff < 0.0001) {
 			i = 1;
-
 			console.log("Alpha Rotation Calibrated to: ", towDiff);
 		}
 	}
-
 	//Diagonal Rod Calibration******************************************************
+	var XTemp5 = parseFloat(document.getElementById('X5').value);
+	var YTemp5 = parseFloat(document.getElementById('Y5').value);
+	var ZTemp5 = parseFloat(document.getElementById('Z5').value);
+	var XOppTemp5 = parseFloat(document.getElementById('XOpp5').value);
+	var YOppTemp5 = parseFloat(document.getElementById('YOpp5').value);
+	var ZOppTemp5 = parseFloat(document.getElementById('ZOpp5').value);
+	//var deltaTower = 0.13083;
+	//var deltaOpp = 0.21083;
+	var delTower = parseFloat(document.getElementById('deltaTower').value);
+	var delOpp = parseFloat(document.getElementById('deltaOpp').value);
+	var diagonalRod = parseFloat(document.getElementById('diagonalRod').value);
+	if (delTower > 0 && delOpp > 0) {
+		var deltaTower = delTower;
+		var deltaOpp = delOpp;
+	} else {
+		var deltaTower = ((X - XTemp5) + (Y - YTemp5) + (Z - ZTemp5)) / 3;
+		var deltaOpp = ((XOpp - XOppTemp5) + (YOpp - YOppTemp5) + (ZOpp - ZOppTemp5)) / 3;
+		document.getElementById('deltaTower').value = deltaTower; // 1/8
+		document.getElementById('deltaOpp').value = deltaOpp; // 1/4
+	}
+	deltaTower = Math.abs(deltaTower);
+	deltaOpp = Math.abs(deltaOpp);
 	var diagChange = 1 / deltaOpp;
 	var towOppDiff = deltaTower / deltaOpp; //0.5
-
 	//increase decreases all towers
 	//decrease increases all towers
-
 	for (var i = 0; i < 1;) {
 		var XYZOpp = (XOpp + YOpp + ZOpp) / 3;
 		diagonalRod = diagonalRod + (XYZOpp * diagChange);
@@ -560,32 +601,24 @@ function calibrate()
 			YOpp = YOpp + XYZ;
 			ZOpp = ZOpp + XYZ;
 		}
-
-		X = checkZero(X);
-		Y = checkZero(Y);
-		Z = checkZero(Z);
-		XOpp = checkZero(XOpp);
-		YOpp = checkZero(YOpp);
-		ZOpp = checkZero(ZOpp);
-
 		//XYZ is zero
-		if (XYZOpp < accuracy && XYZOpp > -accuracy && XYZ < accuracy && XYZ > -accuracy) {
+		if (XYZOpp < 0.0001 && XYZOpp > -0.0001 && XYZ < 0.0001 && XYZ > -0.0001) {
 			i = 1;
-			diagonalRod = parseFloat(diagonalRod.toFixed(3));
+			diagonalRod = parseFloat(diagonalRod.toFixed(6));
 			console.log("Diagonal Rod Calibrated to: ", diagonalRod);
-			document.getElementById('diagonalRod').value = diagonalRod;
+			document.getElementById('diagonalRod').value = diagonalRod.toFixed(3);
 		}
 	}
-
 	//send obtained values back to the document*************************************
 	document.getElementById('A').value = A.toFixed(3);
 	document.getElementById('B').value = B.toFixed(3);
 	document.getElementById('C').value = C.toFixed(3);
+	
 	document.getElementById('HRad').value = HRad.toFixed(3);
 	document.getElementById('HRadManual').value = HRadRatio;
-
 	console.log("New tower heights: ", checkZero(X), checkZero(XOpp), checkZero(Y), checkZero(YOpp), checkZero(Z), checkZero(ZOpp));
 	console.log("New horizontal radius: ", HRad);
+	console.log("New delta radii: ", DA, DB, DC);
 	console.log("New alpha rotation: ", A, B, C);
 }
 
@@ -593,9 +626,13 @@ function enterDefaults(){
 	document.getElementById('A').value = 210;
 	document.getElementById('B').value = 330;
 	document.getElementById('C').value = 90;
+	document.getElementById('DA').value = 0;
+	document.getElementById('DB').value = 0;
+	document.getElementById('DC').value = 0;
 	document.getElementById('HRad').value = 130;
 	document.getElementById('HRadManual').value = -0.5;
 	document.getElementById('stepsPerMM').value = 80;
+	document.getElementById('probeHeight').value = 0;
 
 	/*
 	document.getElementById('X').value = -0.19;
@@ -629,12 +666,13 @@ function enterDefaults(){
 
 <body>
 
-<h><b>Delta Calibration - Alpha Rotation, Diagonal Rod, Horizontal Radius, and Tower XYZ Offset Calibration Tool - V1.0.3</b></h><br /><br />
+<h><b>Delta Calibration - Alpha Rotation, Delta Radius, Diagonal Rod, Horizontal Radius, and Tower XYZ Offset Calibration Tool - V1.0.4</b></h><br /><br />
 <h>Default settings are for the Rostock Max V2.</h><br /><br />
 
 Accuracy:<br>
+<span title="The accuracy the program will want to achieve in each calculation, this does not have anything to do with your printers final height-map tolerance.">
 <input type="text" id="accuracy" placeholder="Accuracy (0.001)" />
-
+</span>
 <br />
 <br />
 
@@ -649,7 +687,7 @@ Measurement inversion:<br>
 	<br />
 </span>
 
-<span title="Get this data from your Printers EEPROM.">
+<span title="This data is found in your printers EEProm, find the value and enter into the corresponding text box.">
 	Diagonal Rod:<br>
 	<input type="text" id="diagonalRod" placeholder="Diagonal Rod (269)" />
 
@@ -673,11 +711,27 @@ Measurement inversion:<br>
 	<input type="text" id="A" placeholder="A - Alpha Rotation (210)" />
 	<input type="text" id="B" placeholder="B - Alpha Rotation (330)" />
 	<input type="text" id="C" placeholder="C - Alpha Rotation (90)" />
+
+	<br />
+	<br />
+
+	Delta Radius - XYZ<br>
+	<input type="text" id="DA" placeholder="A - Delta Radius (0)" />
+	<input type="text" id="DB" placeholder="B - Delta Radius (0)" />
+	<input type="text" id="DC" placeholder="C - Delta Radius (0)" />
 </span>
 
 <br />
 <br />
-Tower heights:<br>
+
+Probe height:<br>
+<span title="Enter the height at the center of the plate, if you are using calipers or a dial gauge this will be zero.">
+	<input type="text" id="probeHeight" placeholder="Probe Height (Center Height mm)" />
+</span>
+<br />
+<br />
+
+Tower heights(X, X Opposite, Y, Y Opposite, Z, Z Opposite):<br>
 <span title="Input the height of each area of the build plate in mm.">
 	<input type="text" id="X" placeholder="X" value=""/>
 	<input type="text" id="XOpp" placeholder="X Opposite" value=""/>
@@ -751,7 +805,7 @@ Printer steps per mm:<br>
 	<br />
 	<br />
 
-	Used to find the diagonal rod percentages:<br>
+	Used to find the diagonal rod percentages(X, X Opposite, Y, Y Opposite, Z, Z Opposite):<br>
 	<span title="Increase your printers diagonal rod length by 1 (change nothing else) unit and write the XYZ and Opposing tower heights here to calculate how far off the rod length is.">
 		<input type="text" id="X5" placeholder="X - DRod +1" />
 		<input type="text" id="XOpp5" placeholder="X Opposite - DRod +1" />
@@ -767,7 +821,7 @@ Printer steps per mm:<br>
 	</span>
 
 	<!-- -->
-	Used to find the Horizontal radius  displacement amount:<br>
+	Used to find the Horizontal radius  displacement amount(X, X Opposite, Y, Y Opposite, Z, Z Opposite):<br>
 	<span title="Increase your printers Horizontal radius by 1 unit (change nothing else) and write the XYZ and Opposing tower heights here to calculate the increment.">
 		<input type="text" id="X1" placeholder="X - HRad +1" />
 		<input type="text" id="XOpp1" placeholder="X Opposite - HRad +1" />
@@ -783,7 +837,7 @@ Printer steps per mm:<br>
 	</span>
 
 	<!-- -->
-	Used to find the X tower offset percentages:<br>
+	Used to find the X tower offset percentages(X, X Opposite, Y, Y Opposite, Z, Z Opposite):<br>
 	<span title="Increase your printers X Tower Offset by 80 steps (change nothing else) and write the XYZ and Opposing tower heights here to calculate the change manually.">
 		<input type="text" id="X2" placeholder="X - Tower Offset X" />
 		<input type="text" id="XOpp2" placeholder="X Opposite - Tower Offset X" />
@@ -798,7 +852,7 @@ Printer steps per mm:<br>
 		<br />
 	</span>
 
-	Used to find the Y tower offset percentages:<br>
+	Used to find the Y tower offset percentages(X, X Opposite, Y, Y Opposite, Z, Z Opposite):<br>
 	<span title="Increase your printers Y Tower Offset by 80 steps (change nothing else) and write the XYZ and Opposing tower heights here to calculate the change manually.">
 		<input type="text" id="X3" placeholder="X - Tower Offset Y" />
 		<input type="text" id="XOpp3" placeholder="X Opposite - Tower Offset Y" />
@@ -813,7 +867,7 @@ Printer steps per mm:<br>
 		<br />
 	</span>
 
-	Used to find the Z tower offset percentages:<br>
+	Used to find the Z tower offset percentages(X, X Opposite, Y, Y Opposite, Z, Z Opposite):<br>
 	<span title="Increase your printers Z Tower Offset by 80 steps (change nothing else) and write the XYZ and Opposing tower heights here to calculate the change manually.">
 		<input type="text" id="X4" placeholder="X - Tower Offset Z" />
 		<input type="text" id="XOpp4" placeholder="X Opposite - Tower Offset Z" />
