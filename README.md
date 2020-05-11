@@ -3,8 +3,6 @@ This repository is set for the bed leveling calibration tool that I made for del
 
 TLDR: This is a program which can calibrate delta printers from an inaccuracy of +/- 2mm(Or more! But this was the test value) to an accuracy of +/- 0.015mm in under five minutes.
 
-/* If you would like to help keep this project going and updated frequently, while also helping me get my college textbooks, then donate to my paypal account - steventrowland@gmail.com */
-
 //What
 
 I very recently started to work on a program which will calibrate a delta style 3d printer, which I made to calibrate my Rostock Max V2. This calibrates my printer without even touching the endstops, shimming the bed, or any other interesting method with which I have seen. But with recent tests, I have corrected my printer from a tolerance of about +/- 2mm (yeah, it was far off) to a tolerance of approximately +/- 0.015 in less than five minutes.
